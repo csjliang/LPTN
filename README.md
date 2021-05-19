@@ -68,7 +68,7 @@ First, check and adapt the yml file ```options/test/LPTN/test_FiveK.yml``` and `
 PYTHONPATH="./:${PYTHONPATH}" CUDA_VISIBLE_DEVICES=0 python codes/test.py -opt options/test/LPTN/test_FiveK.yml
 ```
 
-- Testing inference speed:
+- Test inference speed:
 ```bash
 PYTHONPATH="./:${PYTHONPATH}" CUDA_VISIBLE_DEVICES=0 python codes/test_speed.py -opt options/test/LPTN/test_speed_FiveK.yml
 ```
