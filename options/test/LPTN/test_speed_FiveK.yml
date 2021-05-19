@@ -1,0 +1,37 @@
+# general settings
+name: LPTN_test_speed
+model_type: LPTNTestModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+
+  test:
+    name: FiveK_val
+    type: PairedImageDataset
+#    dataroot_gt: datasets/FiveK/FiveK_480p/test/B
+#    dataroot_lq: datasets/FiveK/FiveK_480p/test/A
+#    io_backend:
+#      type: disk
+    dataroot_gt: datasets/FiveK/FiveK_test_target.lmdb
+    dataroot_lq: datasets/FiveK/FiveK_test_source.lmdb
+    io_backend:
+      type: lmdb
+
+# network structures
+network_g:
+  type: LPTN
+  nrb_low: 5
+  nrb_high: 3
+  num_high: 3
+
+# path
+path:
+  pretrain_network_g: experiments/pretrained_models/net_g_FiveK_numhigh3.pth
+  strict_load_g: false
+
+val:
+  num_img: 10
+  times_per_img: 50
+  fix_img_size: [3840, 2160] # testing speed on specific image size. set to None to test on original size
