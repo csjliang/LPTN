@@ -1,0 +1,124 @@
+# general settings
+name: LPTN_FiveK_paper
+model_type: LPTNModel
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 10
+
+# dataset and data loader settings
+datasets:
+  train:
+    name: FiveK
+    type: UnPairedImageDataset
+    # (for disk)
+#    dataroot_gt: datasets/FiveK/FiveK_480p/train/B
+#    dataroot_lq: datasets/FiveK/FiveK_480p/train/A
+    # (for lmdb)
+    dataroot_gt: datasets/FiveK/FiveK_train_target.lmdb
+    dataroot_lq: datasets/FiveK/FiveK_train_source.lmdb
+    filename_tmpl: '{}'
+    io_backend:
+#      type: disk
+       type: lmdb
+
+    if_fix_size: true # training will be slower if the data shape not fixed (both num_gpu and batch_size need to be 1)
+    gt_size: 256 # training size
+    use_flip: true
+    use_rot: true
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 16
+    batch_size_per_gpu: 16
+    dataset_enlarge_ratio: 100
+    prefetch_mode: cuda
+    pin_memory: true
+
+  val:
+    name: FiveK_val
+    type: PairedImageDataset
+#    dataroot_gt: datasets/FiveK/FiveK_480p/test/B
+#    dataroot_lq: datasets/FiveK/FiveK_480p/test/A
+    dataroot_gt: datasets/FiveK/FiveK_test_target.lmdb
+    dataroot_lq: datasets/FiveK/FiveK_test_source.lmdb
+    io_backend:
+#      type: disk
+      type: lmdb
+
+# network structures
+network_g:
+  type: LPTNPaper
+  nrb_low: 5
+  nrb_high: 3
+  num_high: 3
+
+network_d:
+  type: Discriminator
+
+# path
+path:
+  pretrain_network_g: ~
+  strict_load_g: false
+  resume_state: ~
+
+# training settings
+train:
+  optim_g:
+    type: Adam
+    lr: !!float 1e-4
+    weight_decay: 0
+    betas: [0.9, 0.99]
+  optim_d:
+    type: Adam
+    lr: !!float 1e-4
+    weight_decay: 0
+    betas: [ 0.9, 0.99 ]
+
+  scheduler:
+    type: MultiStepLR
+    milestones: [50000, 100000, 200000, 300000]
+    gamma: 0.5
+
+  total_iter: 300000
+  warmup_iter: -1  # no warm up
+
+  # losses
+  pixel_opt:
+    type: MSELoss
+    loss_weight: 1000
+    reduction: mean
+  gan_opt:
+    type: GANLoss
+    gan_type: standard
+    real_label_val: 1.0
+    fake_label_val: 0.0
+    loss_weight: 1
+  gp_opt:
+    loss_weight: 100
+
+  net_d_iters: 1
+  net_d_init_iters: 0
+
+# validation settings
+val:
+  val_freq: !!float 5e3
+  save_img: true
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: false
+
+# logging settings
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+# dist training settings
+dist_params:
+  backend: nccl
+  port: 29500
