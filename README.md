@@ -24,6 +24,8 @@ while achieving comparable transformation performance against existing methods.
 
 Overall pipeline of the LPTN:
 
+![pipeline](Figs/LPTN_pipeline.jpg)
+
 For more details, please refer to our paper.
 
 #### Getting started
