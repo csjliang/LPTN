@@ -22,6 +22,8 @@ and faithfully preserves the image details. Extensive experimental results on va
 the proposed method can translate 4K images in real-time using one normal GPU 
 while achieving comparable transformation performance against existing methods.
 
+Overall pipeline of the LPTN:
+
 For more details, please refer to our paper.
 
 #### Getting started
