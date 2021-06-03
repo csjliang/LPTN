@@ -1,6 +1,6 @@
 # LPTN
 
-### [Paper](http://www4.comp.polyu.edu.hk/~cslzhang/paper/LPTN-cvpr21-paper.pdf) |   [Supplementary Material](http://www4.comp.polyu.edu.hk/~cslzhang/paper/LPTN-cvpr21-supp.pdf)
+### [Paper](https://arxiv.org/pdf/2105.09188.pdf) |   [Supplementary Material](http://www4.comp.polyu.edu.hk/~cslzhang/paper/LPTN-cvpr21-supp.pdf) |   [Poster](http://liangjie.xyz/LjHomepageFiles/paper_files/poster_LPTN.pdf)
 
 > **High-Resolution Photorealistic Image Translation in Real-Time: A Laplacian Pyramid Translation Network** <br>
 > Jie Liang\*, Hui Zeng\*, and [Lei Zhang](https://www4.comp.polyu.edu.hk/~cslzhang/). <br>
