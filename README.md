@@ -38,7 +38,7 @@ cd LPTN
 
 - Install dependencies. (Python 3 + NVIDIA GPU + CUDA. Recommend to use Anaconda)
 ```bash
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 
 - Download dataset (FiveK in 480p) and create lmdb (to accelerate training).
