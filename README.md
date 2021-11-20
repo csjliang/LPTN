@@ -47,6 +47,8 @@ PYTHONPATH="./:${PYTHONPATH}" python scripts/data_preparation/download_datasets.
 PYTHONPATH="./:${PYTHONPATH}" python scripts/data_preparation/create_lmdb.py
 ```
 
+Users can also download the dataset [HERE](https://drive.google.com/file/d/1oAORKd-TPnPwZvhcnEEJqc1ogT7KgFtx/view?usp=sharing).
+
 #### Training
 
 First, check and adapt the yml file ```options/train/LPTN/train_FiveK.yml```, then
