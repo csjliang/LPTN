@@ -91,7 +91,7 @@ Evaluating files (logs and visualizations) will be saved in the directory ```./r
 
 - We have optimized the training process and improved the performance (get 22.9db on FiveK at 480p)
 
-- We will release the datasets of day2night and sum2win later. (Note: Please send me an email to access the data, thanks!)
+- We will release the datasets of day2night and sum2win later. (Note: Please send me an email to access the data, and use the data for research purposes only. Thanks!)
 
 ### Citation
 If you use this dataset or code for your research, please cite our paper.
