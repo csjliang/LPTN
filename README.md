@@ -93,6 +93,10 @@ Evaluating files (logs and visualizations) will be saved in the directory ```./r
 
 - We will release the datasets of day2night and sum2win later. (Note: Please send me an email to access the data, and use the data for research purposes only. Thanks!)
 
+### License
+
+This project is released under the Apache 2.0 license.
+
 ### Citation
 If you use this dataset or code for your research, please cite our paper.
 ```
